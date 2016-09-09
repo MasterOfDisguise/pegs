@@ -24,6 +24,8 @@ class Manager:
             number_in_row += 1
         board.board[0][0].remove()
         board.pegs -= 1
+        print "first board:"
+        print board
         self.boards.append(board)
 
     def jump(self):
@@ -75,10 +77,15 @@ class Manager:
                             # up to the right
                             if slot.place <= slot.row-2:
                                 if board.board[slot.row-1][slot.place].has_peg and not board.board[slot.row-2][slot.place].has_peg:
+                                    print "Making move 6"
+                                    print "old board: "
+                                    print board
                                     thing = Board(self, board.board, board.move_list)
                                     thing.jump(6, slot)
                                     self.boards.append(thing)
                                     board.has_move = True
+                                    print "new board: "
+                                    print thing
 
             if not board.has_move:
                 board.finish()
@@ -99,6 +106,15 @@ class Board:
         self.has_move = False
         self.move_list = moves
         self.set_up(board)
+
+    def __str__(self):
+        string = ""
+        string += str(self.board[0][0].has_peg)
+        for row in self.board:
+            for col in row:
+                string += " " + str(col.has_peg)
+            string += ","
+        return string
 
     def jump(self, move, slot):
         if move == 1:
