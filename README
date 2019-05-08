@@ -1,0 +1,7 @@
+This is one of the programs I created while doing my independent study in highschool. I created an algorithm to find all possible solutions to the pegboard game and write them into a text file.
+
+Requirements
+  -Python 2.7
+  -Pygame
+  
+run 'Game.py' to start
